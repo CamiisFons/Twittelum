@@ -1,5 +1,6 @@
 package com.example.twiitelum
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -19,6 +20,9 @@ class MainActivity : AppCompatActivity() {
             val conteudo = campoConteudo.text.toString()
 
             Toast.makeText(this, conteudo, Toast.LENGTH_SHORT).show()
+
+            val intecao = Intent(this, ListaActivity::class.java)
+            startActivity(intecao)
         }
     }
 }
