@@ -5,14 +5,21 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import caelum.com.twittelumapp.modelo.Tweet
 import com.example.twiitelum.db.TwittelumDatabase
+import com.example.twiitelum.viewmodel.TweetViewModel
+import com.example.twiitelum.viewmodel.ViewModelFactory
 
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var viewModel: TweetViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        viewModel = ViewModelProvider(this, ViewModelFactory)[TweetViewModel::class.java]
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -37,7 +44,9 @@ class MainActivity : AppCompatActivity() {
         val database = TwittelumDatabase.getDatabase(this)
         val tweetDao = database.getTweetDao()
         tweetDao.salva(tweet)
+
         Toast.makeText(this, conteudo, Toast.LENGTH_SHORT).show()
+
         finish()
 
     }
