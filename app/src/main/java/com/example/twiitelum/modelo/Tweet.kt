@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Tweet(val mensagem: String,
+                 val foto: String?,
                  @PrimaryKey(autoGenerate = true) val id: Long = 0){
     override fun toString(): String {
         return mensagem
